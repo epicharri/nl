@@ -3,22 +3,11 @@ import {
   makeStyles,
   useTheme,
 } from "@material-ui/core/styles"
-import { MenuItem } from "@material-ui/core"
-import Drawer from "@material-ui/core/Drawer"
-import AppBar from "@material-ui/core/AppBar"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import Hidden from "@material-ui/core/Hidden"
-import Toolbar from "@material-ui/core/Toolbar"
-import List from "@material-ui/core/List"
-import Link from "@material-ui/core/Link"
-import Typography from "@material-ui/core/Typography"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
+import { MenuItem, Drawer, AppBar, CssBaseline, Hidden, Toolbar,
+List, Typography } from "@material-ui/core"
+
 import MenuIcon from "@material-ui/icons/Menu"
 import CloseIcon from "@material-ui/icons/Close"
-import HomeIcon from "@material-ui/icons/Home"
-import { MailIcon as SalesInvoiceIcon } from "@material-ui/icons/Mail" // myyntilaskut (suljettu kirjekuori)
-import { DraftsIcon as PurchaseInvoiceIcon } from "@material-ui/icons/Drafts" // ostolaskut (avattu kirjekuori)
 import {
   Switch,
   Route,
@@ -42,14 +31,14 @@ const useStyles = makeStyles(
       zIndex: theme.zIndex.drawer + 1,
     },
     drawer: {
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up("md")]: {
         width: drawerWidth,
         flexShrink: 0,
       },
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up("md")]: {
         display: "none",
       },
     },
@@ -96,19 +85,16 @@ export default function TheDrawer() {
       id: 1,
       text: "Koti",
       link: "/",
-      icon: HomeIcon,
     },
     {
       id: 2,
       text: "Myyntilaskut",
       link: "/salesinvoices",
-      icon: SalesInvoiceIcon,
     },
     {
       id: 3,
       text: "Ostolaskut",
       link: "/purchaseinvoices",
-      icon: PurchaseInvoiceIcon,
     },
   ]
 
@@ -168,7 +154,7 @@ export default function TheDrawer() {
       </AppBar>
       <nav className={classes.drawer}>
         <Hidden
-          smUp
+          mdUp
           implementation="css"
         >
           <Drawer
@@ -197,7 +183,7 @@ export default function TheDrawer() {
         </Hidden>
 
         <Hidden
-          xsDown
+          smDown
           implementation="css"
         >
           <Drawer

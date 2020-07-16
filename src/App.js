@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import ClippedDrawer from './components/ClippedDrawer';
+import TheDrawer from './components/TheDrawer';
 
 
 const App = () => {
 
   return(
-    <ClippedDrawer></ClippedDrawer>
+    <TheDrawer></TheDrawer>
   )
 
 

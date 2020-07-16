@@ -11,6 +11,7 @@ const PurchaseInvoice = () => {
 const PurchaseInvoices =() => {
     return (
         <div>
+            <h2>Ostolaskut</h2>
             <p>Tämä sitten listaa ostolaskuja.</p>
             <PurchaseInvoice></PurchaseInvoice>
         </div>

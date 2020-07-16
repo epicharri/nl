@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch, Route, Link
+} from "react-router-dom"
+import Home from './components/Home'
+import SalesInvoices from './components/SalesInvoices'
+import PurchaseInvoices from './components/PurchaseInvoices'
 
-function App() {
+const App = () => {
+
+  const padding = {
+    padding: 5
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div>
+        <Link style={padding} to="/">Koti</Link>
+        <Link style={padding} to="/salesinvoices">Myyntilaskut</Link>
+        <Link style={padding} to="/purchaseinvoices">Ostolaskut</Link>
+      </div>
+
+      <Switch>
+        <Route path="/salesinvoices">
+          <SalesInvoices />
+        </Route>
+        <Route path="/purchaseinvoices">
+          <PurchaseInvoices />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>        
+      </Switch>
+
+      <div>
+        <i>Nettilasku</i>
+      </div>
+    </Router>
+
+
+
+  )
+
+
+
+
 }
+
 
 export default App;

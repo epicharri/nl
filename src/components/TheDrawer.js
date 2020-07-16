@@ -3,6 +3,7 @@ import {
   makeStyles,
   useTheme,
 } from "@material-ui/core/styles"
+import { MenuItem } from "@material-ui/core"
 import Drawer from "@material-ui/core/Drawer"
 import AppBar from "@material-ui/core/AppBar"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -27,7 +28,6 @@ import Home from "./Home"
 import SalesInvoices from "./SalesInvoices"
 import PurchaseInvoices from "./PurchaseInvoices"
 import {
-  TextareaAutosize,
   IconButton,
 } from "@material-ui/core"
 
@@ -71,6 +71,9 @@ const useStyles = makeStyles(
     logo: {
       padding: 5,
       maxHeight: 40,
+    },
+    menuItemLink: {
+      textDecoration: 'none',
     },
   })
 )
@@ -127,19 +130,15 @@ export default function TheDrawer() {
     >
       <List>
         {navigation.map((item) => (
-          <Link
-            component={RouterLink}
-            to={item.link}
-          >
-            <ListItem
-              button key={item.text}
+
+            <MenuItem
+              key={item.text}
               onClick={setIsMobileFalse}
+              component={RouterLink}
+              to={item.link}
             >
-              <ListItemText
-                primary={item.text}
-              />
-            </ListItem>
-          </Link>
+              {item.text}
+            </MenuItem>
         ))}
       </List>
     </div>

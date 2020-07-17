@@ -3,6 +3,7 @@ import {
   Card,
   Typography,
   CardContent,
+  Box,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
@@ -37,6 +38,17 @@ const PurchaseInvoice = ({ props }) => {
           >
             {invoice.sender}
           </Typography>
+          <Box display="flex">
+            <Typography
+              className={classes.root}
+              color="textPrimary"
+            >
+              {invoice.total}
+            </Typography>
+            <Typography>
+              {invoice.dueDate}
+            </Typography>
+          </Box>
         </CardContent>
       </Card>
 

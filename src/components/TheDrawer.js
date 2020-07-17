@@ -95,11 +95,12 @@ const useStyles = makeStyles(
 
 export default function TheDrawer() {
   const classes = useStyles()
-
+  const theme = useTheme()
   const [
     isMobile,
     setIsMobile,
   ] = useState(false)
+
   const toggleIsMobile = () => {
     setIsMobile(!isMobile)
   }

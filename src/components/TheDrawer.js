@@ -29,6 +29,7 @@ import {
 import Home from "./Home"
 import SalesInvoices from "./SalesInvoices"
 import PurchaseInvoices from "./PurchaseInvoices"
+import PurchaseInvoicesAppBar from "./PurchaseInvoicesAppBar"
 import { IconButton } from "@material-ui/core"
 import {
   indigo,
@@ -148,18 +149,16 @@ export default function TheDrawer() {
     >
       <List>
         {navigation.map((item) => (
-          
-            <MenuItem
-              key={item.id}
-              onClick={setIsMobileFalse}
-              component={RouterLink}
-              to={item.link}
-            >
-              {item.text}
-            </MenuItem>
-        
+          <MenuItem
+            key={item.id}
+            onClick={setIsMobileFalse}
+            component={RouterLink}
+            to={item.link}
+          >
+            {item.text}
+          </MenuItem>
         ))}
-        </List>
+      </List>
     </div>
   )
 
@@ -247,6 +246,7 @@ export default function TheDrawer() {
             <Route path="/salesinvoices">
               <SalesInvoices />
             </Route>
+
             <Route path="/purchaseinvoices">
               <PurchaseInvoices />
             </Route>
@@ -254,7 +254,7 @@ export default function TheDrawer() {
               <Home />
             </Route>
           </Switch>
-
+          <Divider></Divider>
           <Typography paragraph>
             Tässä voisi olla jotain
             tekstiä.

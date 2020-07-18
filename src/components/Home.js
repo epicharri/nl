@@ -7,6 +7,7 @@ const Home = () => {
             <p>Tämä on niin sanottu Koti</p>
         </div>
     )
+    
 }
 
 export default Home

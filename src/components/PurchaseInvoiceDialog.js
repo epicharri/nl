@@ -49,6 +49,7 @@ export default function PurchaseInvoiceDialog(
     props.invoiceClicked
   const setInvoiceClicked =
     props.setInvoiceClicked
+  const invoice=props.invoice
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -121,17 +122,29 @@ export default function PurchaseInvoiceDialog(
         <List>
           <ListItem button>
             <ListItemText
-              primary="Phone ringtone"
-              secondary="Titania"
+              primary={invoice.sender}
+              secondary="Laskun lähettäjä"
             />
           </ListItem>
           <Divider />
           <ListItem button>
             <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
+              primary={invoice.total}
+              secondary="Laskun summa"
             />
           </ListItem>
+          <ListItem button>
+            <ListItemText
+              primary={invoice.dueDate}
+              secondary="Eräpäivä"
+            />
+          </ListItem>
+          <ListItem button>
+            <ListItemText
+              primary={invoice.ban}
+              secondary="Tilinumero"
+            />
+          </ListItem>          
         </List>
       </Dialog>
     </div>

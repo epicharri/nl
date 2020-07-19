@@ -54,6 +54,7 @@ const PurchaseInvoice = (props) => {
       setOpen={setOpenDialog}
       invoiceClicked={invoiceClicked}
       setInvoiceClicked={invoiceClicked}
+      invoice={invoice}
       changePhaseOfInvoice={
         changePhaseOfInvoice
       }
@@ -143,7 +144,6 @@ const PurchaseInvoices = (props) => {
     const invoice = purchaseInvoices.find(
       (item) => item.id === invoiceId
     )
-    console.log(invoice)
     invoice.phase = phase
     const newInvoiceList = []
     let item

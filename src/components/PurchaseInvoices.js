@@ -1,26 +1,13 @@
 import React from "react"
-import {
-  useState,
-  useEffect,
-} from "react"
+import { useState } from "react"
 import {
   Card,
   Typography,
   CardContent,
   Box,
-  AppBar,
-  Menu,
-  MenuItem,
 } from "@material-ui/core"
-import {
-  makeStyles,
-  useTheme,
-} from "@material-ui/core/styles"
-import PurchaseInvoicesAppBar from "./PurchaseInvoicesAppBar"
-import {
-  Route,
-  Switch,
-} from "react-router-dom"
+import { makeStyles } from "@material-ui/core/styles"
+import PurchaseInvoiceDialog from "./PurchaseInvoiceDialog"
 
 const useStyles = makeStyles({
   root: {
@@ -40,14 +27,47 @@ const useStyles = makeStyles({
   },
 })
 
-const PurchaseInvoice = ({ props }) => {
-  const invoice = props
+const PurchaseInvoice = (props) => {
+  const invoice = props.item
+  const changePhaseOfInvoice =
+    props.changePhaseOfInvoice
   const classes = useStyles()
-  return (
+  const [
+    openDialog,
+    setOpenDialog,
+  ] = useState(false)
+  const [
+    invoiceClicked,
+    setInvoiceClicked,
+  ] = useState(null)
+  const openInvoiceToDialog = (
+    props
+  ) => {
+    const key = props
+    setInvoiceClicked(key)
+    setOpenDialog(true)
+  }
+
+  return openDialog ? (
+    <PurchaseInvoiceDialog
+      open={openDialog}
+      setOpen={setOpenDialog}
+      invoiceClicked={invoiceClicked}
+      setInvoiceClicked={invoiceClicked}
+      changePhaseOfInvoice={
+        changePhaseOfInvoice
+      }
+    />
+  ) : (
     <>
       <Card
         className={classes.root}
         key={invoice.id}
+        onClick={() =>
+          openInvoiceToDialog(
+            invoice.id
+          )
+        }
       >
         <CardContent>
           <Typography
@@ -109,22 +129,47 @@ const PurchaseInvoices = (props) => {
       ban: "fi993322334455",
     },
   ]
+
+  const [
+    purchaseInvoices,
+    setPurchaseInvoices,
+  ] = useState(listOfPurchaceInvoices)
+
   //phases are: rejected, open, accepted and paid.
-  function useInvoicePhase(props) {
-    const [phase, setPhase] = useState(
-      null
+  function changePhaseOfInvoice(
+    invoiceId,
+    phase
+  ) {
+    const invoice = purchaseInvoices.find(
+      (item) => item.id === invoiceId
     )
+    console.log(invoice)
+    invoice.phase = phase
+    const newInvoiceList = []
+    let item
+    for (item of purchaseInvoices) {
+      if (item.id !== invoiceId) {
+        newInvoiceList.push(item)
+      }
+    }
+    newInvoiceList.push(invoice)
+    setPurchaseInvoices(newInvoiceList)
   }
 
   function purchaseInvoiceCards(props) {
     const phase = props
-    return listOfPurchaceInvoices
+
+    const purchaseInvoiceList = purchaseInvoices
+    return purchaseInvoiceList
       .filter(
         (item) => item.phase === phase
       )
       .map((item) => (
         <PurchaseInvoice
-          props={item}
+          item={item}
+          changePhaseOfInvoice={
+            changePhaseOfInvoice
+          }
         ></PurchaseInvoice>
       ))
   }

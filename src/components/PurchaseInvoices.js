@@ -4,6 +4,7 @@ import {
   Card,
   Typography,
   CardContent,
+  CardActionArea,
   Box,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
@@ -61,45 +62,53 @@ const PurchaseInvoice = (props) => {
     />
   ) : (
     <>
-      <Card
-        className={classes.root}
-        key={invoice.id}
-        onClick={() =>
-          openInvoiceToDialog(
-            invoice.id
-          )
-        }
-      >
-        <CardContent>
-          <Box mr={1}>
-            <Typography
-              className={classes.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              {invoice.sender}
-            </Typography>
-          </Box>
-          <Box display="flex">
-            <Box mr={2}>
-              <Typography
-                className={classes.root}
-                color="textPrimary"
-              >
-                {invoice.total}
-              </Typography>
-            </Box>
+      <CardActionArea>
+        <Card
+          className={classes.root}
+          key={invoice.id}
+          onClick={() =>
+            openInvoiceToDialog(
+              invoice.id
+            )
+          }
+        >
+          <CardContent>
             <Box mr={1}>
               <Typography
-                className={classes.root}
+                className={
+                  classes.title
+                }
                 color="textSecondary"
+                gutterBottom
               >
-                {invoice.dueDate}
+                {invoice.sender}
               </Typography>
             </Box>
-          </Box>
-        </CardContent>
-      </Card>
+            <Box display="flex">
+              <Box mr={2}>
+                <Typography
+                  className={
+                    classes.root
+                  }
+                  color="textPrimary"
+                >
+                  {invoice.total}
+                </Typography>
+              </Box>
+              <Box mr={1}>
+                <Typography
+                  className={
+                    classes.root
+                  }
+                  color="textSecondary"
+                >
+                  {invoice.dueDate}
+                </Typography>
+              </Box>
+            </Box>
+          </CardContent>
+        </Card>
+      </CardActionArea>
     </>
   )
 }

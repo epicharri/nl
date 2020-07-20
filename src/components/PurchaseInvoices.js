@@ -104,6 +104,8 @@ const PurchaseInvoices = (props) => {
       total: "2000.00",
       phase: "open",
       ban: "fi991122334455",
+      number: "12345",
+      ref: "44444433111",
     },
     {
       id: "2",
@@ -112,6 +114,8 @@ const PurchaseInvoices = (props) => {
       total: "10722.19",
       phase: "open",
       ban: "fi995522334455",
+      number: "3333",
+      ref: "434523455",
     },
     {
       id: "3",
@@ -120,6 +124,8 @@ const PurchaseInvoices = (props) => {
       total: "117.16",
       phase: "open",
       ban: "fi994422334455",
+      number: "345455",
+      ref: "44444433",
     },
     {
       id: "4",
@@ -128,6 +134,8 @@ const PurchaseInvoices = (props) => {
       total: "1431.11",
       phase: "open",
       ban: "fi993322334455",
+      number: "43455555",
+      ref: "4456788",
     },
   ]
 

@@ -12,6 +12,9 @@ import IconButton from "@material-ui/core/IconButton"
 import Typography from "@material-ui/core/Typography"
 import CloseIcon from "@material-ui/icons/Close"
 import Slide from "@material-ui/core/Slide"
+import Box from "@material-ui/core/Box"
+import { flexbox } from "@material-ui/system"
+import InvoiceInfoPieceCard from "./InvoiceInfoPieceCard"
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -49,7 +52,7 @@ export default function PurchaseInvoiceDialog(
     props.invoiceClicked
   const setInvoiceClicked =
     props.setInvoiceClicked
-  const invoice=props.invoice
+  const invoice = props.invoice
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -77,7 +80,6 @@ export default function PurchaseInvoiceDialog(
 
   return (
     <div>
-
       <Dialog
         fullScreen
         open={open}
@@ -100,8 +102,8 @@ export default function PurchaseInvoiceDialog(
               variant="h6"
               className={classes.title}
             >
-              Ostolasku id:llä{" "}
-              {invoiceClicked}
+              Ostolasku:{" "}
+              {invoice.sender}
             </Typography>
             <Button
               autoFocus
@@ -119,33 +121,35 @@ export default function PurchaseInvoiceDialog(
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText
-              primary={invoice.sender}
-              secondary="Laskun lähettäjä"
-            />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary={invoice.total}
-              secondary="Laskun summa"
-            />
-          </ListItem>
-          <ListItem button>
-            <ListItemText
-              primary={invoice.dueDate}
-              secondary="Eräpäivä"
-            />
-          </ListItem>
-          <ListItem button>
-            <ListItemText
-              primary={invoice.ban}
-              secondary="Tilinumero"
-            />
-          </ListItem>          
-        </List>
+        <Box
+          display="flex"
+          flexWrap="wrap"
+        >
+          <InvoiceInfoPieceCard
+            title="Laskun lähettäjä"
+            data={invoice.sender}
+          />
+          <InvoiceInfoPieceCard
+            title="Laskun summa"
+            data={invoice.total}
+          />
+          <InvoiceInfoPieceCard
+            title="Eräpäivä"
+            data={invoice.dueDate}
+          />
+          <InvoiceInfoPieceCard
+            title="Tilinumero"
+            data={invoice.ban}
+          />
+          <InvoiceInfoPieceCard
+            title="Viitenumero"
+            data={invoice.ref}
+          />
+          <InvoiceInfoPieceCard
+            title="Laskun numero"
+            data={invoice.number}
+          />
+        </Box>
       </Dialog>
     </div>
   )

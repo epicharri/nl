@@ -11,7 +11,7 @@ import PurchaseInvoiceDialog from "./PurchaseInvoiceDialog"
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: "sm",
     marginBottom: 5,
   },
   bullet: {
@@ -71,23 +71,32 @@ const PurchaseInvoice = (props) => {
         }
       >
         <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            {invoice.sender}
-          </Typography>
-          <Box display="flex">
+          <Box mr={1}>
             <Typography
-              className={classes.root}
-              color="textPrimary"
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
             >
-              {invoice.total}
+              {invoice.sender}
             </Typography>
-            <Typography>
-              {invoice.dueDate}
-            </Typography>
+          </Box>
+          <Box display="flex">
+            <Box mr={2}>
+              <Typography
+                className={classes.root}
+                color="textPrimary"
+              >
+                {invoice.total}
+              </Typography>
+            </Box>
+            <Box mr={1}>
+              <Typography
+                className={classes.root}
+                color="textSecondary"
+              >
+                {invoice.dueDate}
+              </Typography>
+            </Box>
           </Box>
         </CardContent>
       </Card>
